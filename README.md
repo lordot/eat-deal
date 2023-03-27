@@ -1,2 +1,2 @@
-# eat-deal
+# EatDeal
  Discount aggregation service in cafes and restaurants
