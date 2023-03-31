@@ -1,3 +1,5 @@
+from timezone_field import TimeZoneField
+
 from .services import times
 
 from django.db import models
@@ -9,20 +11,15 @@ class Day(models.Model):
     def __str__(self):
         return self.name
 
-    def natural_key(self):
-        return self.name
-
 
 class City(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    utc_time = TimeZoneField(use_pytz=True)
 
     class Meta:
         verbose_name_plural = "Cities"
 
     def __str__(self):
-        return self.name
-
-    def natural_key(self):
         return self.name
 
 
@@ -33,9 +30,6 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-    def natural_key(self):
-        return self.name
-
 
 class Cafe(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -43,9 +37,6 @@ class Cafe(models.Model):
     city = models.ForeignKey(City, on_delete=models.PROTECT, related_name='cafes')
 
     def __str__(self):
-        return self.name
-
-    def natural_key(self):
         return self.name
 
 

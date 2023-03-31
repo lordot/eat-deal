@@ -6,6 +6,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DEFAULT_CITY = os.getenv('DEFAULT_CITY', 'Canggu')
 GOOGLE_API = os.getenv('GOOGLE_API')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -29,6 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'timezone_field',
+    'django.contrib.admindocs',
+    'rest_framework',
     'users.apps.UsersConfig',
     'promos.apps.PromosConfig',
 ]
@@ -109,6 +113,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+TZ = 'UTC'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
