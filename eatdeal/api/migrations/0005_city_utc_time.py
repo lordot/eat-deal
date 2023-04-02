@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('promos', '0004_alter_day_name'),
+        ('api', '0004_alter_day_name'),
     ]
 
     operations = [

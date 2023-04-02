@@ -1,4 +1,10 @@
 #map {
-  height: 700px; /* The height is 400 pixels */
-  width: 100%; /* The width is the width of the web page */
-}
+    height: 50vh; /* высота карты на устройствах, где viewport height доступен */
+    margin-top: 20px; /* отступ от headers сверху */
+  }
+
+  @media (min-width: 768px) {
+    #map {
+      height: calc(100vh - 100px); /* высота карты на устройствах, где viewport height не доступен */
+    }
+  }

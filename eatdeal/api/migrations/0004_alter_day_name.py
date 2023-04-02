@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('promos', '0003_rename_name_promo_title_alter_promo_unique_together'),
+        ('api', '0003_rename_name_promo_title_alter_promo_unique_together'),
     ]
 
     operations = [

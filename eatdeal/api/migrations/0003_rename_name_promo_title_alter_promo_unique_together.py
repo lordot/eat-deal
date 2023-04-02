@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('promos', '0002_alter_city_options'),
+        ('api', '0002_alter_city_options'),
     ]
 
     operations = [

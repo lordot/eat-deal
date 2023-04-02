@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Promo
+from api.models import Promo
 
 
 class PromoSerializer(serializers.ModelSerializer):

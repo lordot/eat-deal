@@ -1,11 +1,10 @@
 from datetime import datetime
 
-from django.conf import settings
 from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404
 
-from ..serializers import PromoSerializer
-from ..models import Promo, City
+from api.serializers import PromoSerializer
+from api.models import Promo, City
 from rest_framework import serializers
 
 

@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
     'rest_framework',
     'users.apps.UsersConfig',
-    'promos.apps.PromosConfig',
+    'api.apps.PromosConfig',
+    'frontend.apps.FrontendConfig'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,7 @@ ROOT_URLCONF = 'eatdeal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'eatdeal/frontend/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

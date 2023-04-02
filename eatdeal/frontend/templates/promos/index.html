@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Promos for {{ city }}
+{% endblock title %}
+{% block variables %}
+    {{ markers|json_script:"markers" }}
+    {{ city|json_script:"city" }}
+{% endblock variables %}
+{% block content %}
+    <div id="map"></div>
+    <script src="{% static 'js/promos_map.js' %}"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_API }}&callback=initMap"></script>
+    </div>
+{% endblock %}

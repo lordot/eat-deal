@@ -43,7 +43,7 @@ class Cafe(models.Model):
 class Promo(models.Model):
     title = models.CharField(max_length=256, unique=True)
     description = models.TextField(blank=True, null=True, max_length=256)
-    cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE, related_name='promos')
+    cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE, related_name='api')
     image = models.ImageField(blank=True, null=True)
     start_time = models.TimeField(choices=times.get_start_end_times())
     end_time = models.TimeField(choices=times.get_start_end_times())
