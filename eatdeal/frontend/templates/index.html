@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Map with Promos</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <div>
+    <label for="city-select">City:</label>
+    <select id="city-select">
+      <option value="{{ DEFAULT_CITY }}">Select a city</option>
+    </select>
+    <label for="promo-select">Promos:</label>
+    <select id="promo-select">
+      <option value="current">Current Promos</option>
+      <option value="all">All Promos</option>
+    </select>
+  </div>
+  <div id="map"></div>
+  <script src="{% static 'js/map.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_API }}&callback=initMap" async defer></script>
+</body>
+</html>
