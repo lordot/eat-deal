@@ -1,8 +1,7 @@
+from django.db import models
 from timezone_field import TimeZoneField
 
 from .services import times
-
-from django.db import models
 
 
 class Day(models.Model):
@@ -34,7 +33,9 @@ class Tag(models.Model):
 class Cafe(models.Model):
     name = models.CharField(max_length=100, unique=True)
     website = models.URLField(blank=True, null=True)
-    city = models.ForeignKey(City, on_delete=models.PROTECT, related_name='cafes')
+    city = models.ForeignKey(
+        City, on_delete=models.PROTECT, related_name='cafes'
+    )
 
     def __str__(self):
         return self.name
@@ -43,7 +44,9 @@ class Cafe(models.Model):
 class Promo(models.Model):
     title = models.CharField(max_length=256, unique=True)
     description = models.TextField(blank=True, null=True, max_length=256)
-    cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE, related_name='api')
+    cafe = models.ForeignKey(
+        Cafe, on_delete=models.CASCADE, related_name='api'
+    )
     image = models.ImageField(blank=True, null=True)
     start_time = models.TimeField(choices=times.get_start_end_times())
     end_time = models.TimeField(choices=times.get_start_end_times())

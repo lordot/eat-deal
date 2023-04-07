@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import *
 
+from .models import Cafe, City, Day, Promo, Tag
 
 admin.site.register([Tag, City, Cafe, Day])
 
@@ -12,5 +12,3 @@ class PromoAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description')
     ordering = ('title',)
     filter_horizontal = ('tags', 'days')
-
-

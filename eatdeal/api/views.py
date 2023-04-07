@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.http import JsonResponse
+from rest_framework.mixins import ListModelMixin
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.mixins import ListModelMixin
 
 from .models import City, Promo
 from .serializers import PromoSerializer
@@ -25,4 +25,3 @@ class PromoViewSet(ListModelMixin, GenericViewSet):
         else:
             data = cls.get_current()
         return Response(data)
-
