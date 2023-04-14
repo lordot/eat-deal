@@ -9,4 +9,5 @@ class PromoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Promo
-        fields = ['title', 'description', 'start_time', 'end_time', 'cafe', 'is_favorited']
+        fields = ['id', 'title', 'description',
+                  'start_time', 'end_time', 'cafe', 'is_favorited']

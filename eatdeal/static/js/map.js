@@ -1,3 +1,38 @@
+function getCookie(name) {
+  const value = "; " + document.cookie;
+  const parts = value.split("; " + name + "=");
+  if (parts.length === 2) {
+    return parts.pop().split(";").shift();
+  }
+}
+
+function toggleFavorite(event, id) {
+  event.stopPropagation();
+  const button = event.target;
+  const isFavorited = button.textContent === "Unfavorite";
+
+  const requestOptions = {
+    method: isFavorited ? "DELETE" : "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": getCookie("csrftoken"),
+    },
+  };
+
+  if (isFavorited) {
+    fetch(`/api/promos/${id}/favorite/`, { method: "DELETE", headers: {"X-CSRFToken": getCookie("csrftoken")} })
+      .then(() => {
+        button.textContent = "Favorite";
+      })
+      .catch((error) => console.error("Failed to unfavorite promo:", error));
+  } else {
+    fetch(`/api/promos/${id}/favorite/`, { method: "POST", headers: {"X-CSRFToken": getCookie("csrftoken")} })
+      .then(() => {
+        button.textContent = "Unfavorite";
+      })
+      .catch((error) => console.error("Failed to favorite promo:", error));
+  }
+}
 // Fetch cities and add them to the select element
 fetch('/api/cities/')
   .then(response => response.json())
@@ -34,15 +69,23 @@ function initMap() {
         const address = `${promo.cafe}, ${city}`;
         geocoder.geocode({ 'address': address }, function(results, status) {
           if (status === 'OK') {
+            const iconColor = promo.is_favorited ? 'https://maps.google.com/mapfiles/ms/icons/pink-dot.png' : 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
             const marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
               title: promo.title,
               description: promo.description,
-              cafe: promo.cafe
+              cafe: promo.cafe,
+              icon: iconColor
             });
             marker.addListener('click', function() {
-              const contentStr = `<h3>${promo.cafe}</h3><h4>${promo.title}</h4><p>${promo.description}</p>`;
+              const favoriteButtonText = promo.is_favorited ? "Unfavorite" : "Favorite";
+              const contentStr = `
+                <h3>${promo.cafe}</h3>
+                <h4>${promo.title}</h4>
+                <p>${promo.description}</p>
+                <button onclick="toggleFavorite(event, ${promo.id})">${favoriteButtonText}</button>
+              `;
               const infowindow = new google.maps.InfoWindow({
                 content: contentStr
               });
