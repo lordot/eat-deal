@@ -10,7 +10,7 @@ Registration in the service is available locally or using the Google service. Af
 
 ## Database Structure
 
-https://github.com/lordot/eatdeal/blob/main/database_structure.png
+![Databse structure](https://github.com/lordot/eatdeal/blob/main/database_structure.png)
 
 ## Environment Variables
 
