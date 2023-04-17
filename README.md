@@ -7,6 +7,11 @@ The administrator can add any number of cities to the service, as well as edit t
 
 
 Registration in the service is available locally or using the Google service. After registration, the user can add promotions to favorites.
+
+## Database Structure
+
+https://github.com/lordot/eatdeal/blob/main/database_structure.png
+
 ## Environment Variables
 
 Before installing and running the project, you need to change the values ​​​​of the variables in the .env file in the infra folder:
@@ -49,6 +54,3 @@ After launch, the admin panel will be available at http://127.0.0.1:8000/admin/
 ## Google Authorization
 
 After launch, you need to create a google provider in the administrative panel in order for authorization through Google to work. To do this, you first need to register at https://developers.google.com and get a **Client ID** and **Secret** for OAuth 2.0 authorization.
-
-## Database structure
-
