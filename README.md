@@ -54,3 +54,13 @@ After launch, the admin panel will be available at http://127.0.0.1:8000/admin/
 ## Google Authorization
 
 After launch, you need to create a google provider in the administrative panel in order for authorization through Google to work. To do this, you first need to register at https://developers.google.com and get a **Client ID** and **Secret** for OAuth 2.0 authorization.
+
+## Roadmap
+
+- Add the ability for users to make a request to the administrator to add promotions to the service
+
+- Redesign the whole site
+
+- Add display tags in the promotion card
+
+- Add filtering by tags
