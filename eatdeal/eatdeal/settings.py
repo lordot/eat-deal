@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'eatdeal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('NAME', 'postgres'),
-        'USER': os.getenv('USER', 'postgres'),
-        'PASSWORD': os.getenv('PASSWORD', 'postgres'),
+        'NAME': os.getenv('DB_NAME', 'postgres'),
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres'),
         'HOST': os.getenv('HOST', 'localhost'),
         'PORT': os.getenv('PORT', '5432')
     }
@@ -152,7 +152,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 
 SOCIALACCOUNT_PROVIDERS = {
-    'google': {
+        'google': {
         'SCOPE': [
             'profile',
             'email',

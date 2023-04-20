@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.db.models import QuerySet, Exists, OuterRef
+from django.db.models import Exists, OuterRef, QuerySet
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 
@@ -10,7 +10,6 @@ from api.serializers import PromoSerializer
 
 class PromoMarkers:
     """Класс маркеров для карты."""
-
     def __init__(self, city: str, user, serializer=PromoSerializer):
         self.city: City = get_object_or_404(City, name=city)
         self.serializer: serializers = serializer
@@ -20,7 +19,7 @@ class PromoMarkers:
         qs: QuerySet = Promo.objects.select_related(
             'cafe'
         ).prefetch_related('tags', 'days').filter(
-            cafe__city__name=self.city.name
+            cafe__city__name=self.city.name, is_approved=True, is_active=True
         )
         if user.is_authenticated:
             return qs.annotate(
@@ -44,5 +43,3 @@ class PromoMarkers:
     def get_all(self) -> list:
         """Получение всех маркеров."""
         return self.serializer(self.queryset, many=True).data
-
-

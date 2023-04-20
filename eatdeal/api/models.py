@@ -1,6 +1,8 @@
 from django.db import models
 from timezone_field import TimeZoneField
 
+from users.models import User
+
 from .services import times
 
 
@@ -53,6 +55,9 @@ class Promo(models.Model):
     days = models.ManyToManyField(Day)
     is_active = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag)
+    favorited = models.ManyToManyField(User, 'favorites', blank=True)
+    author = models.ForeignKey(User, models.CASCADE, 'promos')
+    is_approved = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('title', 'cafe')
