@@ -57,7 +57,7 @@ After launch, you need to create a google provider in the administrative panel i
 
 ## Roadmap
 
-- Add the ability for users to make a request to the administrator to add promotions to the service
+- ~~Add the ability for users to make a request to the administrator to add promotions to the service~~
 
 - Redesign the whole site
 
