@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.shortcuts import render
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -41,3 +42,5 @@ class PromoFavoriteView(APIView):
     def delete(self, request, pk):
         self.request.user.favorites.remove(self.get_object(pk))
         return Response('unfavored!')
+
+
